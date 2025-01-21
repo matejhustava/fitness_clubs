@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #0d2134;
+  color: #FFFFFF;
+}
+
+h1 {
+  font-style: italic;
+  padding: 0 1.5em;
+}
+
+.fnt-orange {
+  color: #c84229;
+}
+
+.fnt-default {
+  font-size: 1rem;
+}
+
+.error {
+  color: #c84229;
+}
+
+.loading,
+.error,
+.no-items {
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
