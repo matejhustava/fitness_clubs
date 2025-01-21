@@ -2,15 +2,24 @@ import { useState } from 'react';
 import useFetchClubs from '../../hooks/useFetchClubs';
 import SearchInput from '../UI/SearchInput';
 import classes from './Clubs.module.css';
+import Mapview, { MapMarker } from '../UI/Mapview';
+import { Club } from '../../data/Club';
 
 function Clubs() {
   const [ searchString, setSearchString ] = useState<string>('');
+  const [ showMap, setShowMap ] = useState<boolean>(false);
   const { clubs, error, loading } = useFetchClubs();
 
-  const clubsForDisplay = searchString !== '' ? clubs.filter((club) =>
+  const clubsForDisplay: Club[] = searchString !== '' ? clubs.filter((club) =>
     (club.listName + club.address.address1 + club.address.country + club.address.city + club.address.postalCode)
       .toLowerCase().includes(searchString.toLowerCase())
   ) : clubs;
+
+  const markers: MapMarker[] = clubsForDisplay.filter(club => club.geoLocation).map((club) => ({
+    id: club.id,
+    text: club.listName + ' - ' + club.address.address1 + ', ' + club.address.city + ', ' + club.address.country,
+    geolocation: club.geoLocation
+  }));
 
   const handleSearchChanged = (value: string) => {
     setSearchString(value);
@@ -23,7 +32,11 @@ function Clubs() {
       {clubs.length === 0 && !loading && !error && <div className='no-items'>No clubs found</div>}
       {clubs.length > 0 && !loading && !error &&
         <div className={classes.clubs}>
-          <SearchInput placeholder='Find your club' searchChanged={handleSearchChanged} />
+          {showMap && <Mapview markers={markers}/>}
+          <div>
+            <SearchInput placeholder='Find your club' searchChanged={handleSearchChanged} />
+            <button className='button' onClick={() => setShowMap((prevValue) => !prevValue)}>{showMap ? 'HIDE MAP' : 'SHOW MAP'}</button>
+          </div>
           <table className={classes['clubs-table']} cellPadding='0' cellSpacing='0'>
             <thead>
               <tr>

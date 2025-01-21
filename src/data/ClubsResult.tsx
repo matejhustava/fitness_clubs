@@ -1,4 +1,4 @@
-import { Club } from "./Club";
+import { Club } from './Club';
 
 export interface ClubsResult {
     clubs: Club[];

@@ -1,8 +1,11 @@
+import { GeoLocation } from './GeoLocation';
+
 export interface Club {
     id: number;
     name: string;
     listName: string;
     address: Address;
+    geoLocation: GeoLocation;
 }
 
 interface Address {
