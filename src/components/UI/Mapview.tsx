@@ -1,9 +1,9 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { GeoLocation } from "../../data/GeoLocation";
 
-export default function Mapview(props: { markers: MapMarker[] }) {
+export default function Mapview(props: { markers: MapMarker[], center: GeoLocation, zoom: number }) {
   return (
-    <MapContainer center={[60, 10]} zoom={7} scrollWheelZoom={false}>
+    <MapContainer center={[props.center.latitude, props.center.longitude]} zoom={props.zoom} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -30,6 +30,11 @@ h1 {
   padding: 0.5rem 0.75rem;
   font-style: italic;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #173a5b;
 }
 
 .error {

@@ -32,10 +32,10 @@ function Clubs() {
       {clubs.length === 0 && !loading && !error && <div className='no-items'>No clubs found</div>}
       {clubs.length > 0 && !loading && !error &&
         <div className={classes.clubs}>
-          {showMap && <Mapview markers={markers}/>}
+          {showMap && <Mapview markers={markers} zoom={7} center={{latitude: 60, longitude: 10}}/>}
           <div>
             <SearchInput placeholder='Find your club' searchChanged={handleSearchChanged} />
-            <button className='button' onClick={() => setShowMap((prevValue) => !prevValue)}>{showMap ? 'HIDE MAP' : 'SHOW MAP'}</button>
+            {clubsForDisplay.length > 0 && <button className='button' onClick={() => setShowMap((prevValue) => !prevValue)}>{showMap ? 'HIDE MAP' : 'SHOW MAP'}</button>}
           </div>
           <table className={classes['clubs-table']} cellPadding='0' cellSpacing='0'>
             <thead>
