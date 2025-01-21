@@ -1,6 +1,6 @@
 # Fitness clubs
 
-This project lists available fitness clubs and their addresses with data from API.
+This project lists available fitness clubs and their addresses using data from API.
 It allows user to search for given club.
 It allows user to show found clubs on a map.
 

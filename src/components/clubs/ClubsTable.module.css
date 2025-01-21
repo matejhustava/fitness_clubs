@@ -1,0 +1,30 @@
+.clubs-table {
+  width: 100%;
+}
+
+.clubs-table {
+  th {
+    text-align: left;
+    padding: 0.5em 1em;
+    opacity: 0.25;
+    font-style: italic;
+  }
+}
+
+.club-row td {
+  width: 25%;
+  padding: 0.5em 1em;
+}
+
+.club-row td.name {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.club-row td.city {
+  text-transform: uppercase;
+}
+
+.club-row:hover td {
+  background-color: #173a5b;
+}
