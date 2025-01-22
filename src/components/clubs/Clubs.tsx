@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import useFetchClubs from '../../hooks/useFetchClubs';
 import SearchInput from '../UI/SearchInput';
 import classes from './Clubs.module.css';
@@ -22,9 +22,9 @@ function Clubs() {
     geolocation: club.geoLocation
   }));
 
-  const handleSearchChanged = (value: string) => {
+  const handleSearchChanged = useCallback((value: string) => {
     setSearchString(value);
-  }
+  }, []);
 
   return (
     <>

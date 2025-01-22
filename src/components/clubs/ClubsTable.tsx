@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Club } from "../../data/Club";
 import classes from './ClubsTable.module.css';
 
-function ClubsTable(props: { clubs: Club[] }) {
+const ClubsTable = memo((props: { clubs: Club[] }) => {
   return (
     <table className={classes['clubs-table']} cellPadding='0' cellSpacing='0'>
       <thead>
@@ -24,6 +25,6 @@ function ClubsTable(props: { clubs: Club[] }) {
       </tbody>
     </table>
   );
-}
+});
 
 export default ClubsTable;

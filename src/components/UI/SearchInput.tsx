@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import classes from './SearchInput.module.css';
 
 const debounceTime = 500;
 
-function SearchInput(props: { placeholder: string, searchChanged: (value: string) => void}) {
+const SearchInput = memo((props: { placeholder: string, searchChanged: (value: string) => void}) => {
   const debouncedOnChange = (onChange: (value: string) => void) => {
     let timeout: NodeJS.Timeout;
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +22,6 @@ function SearchInput(props: { placeholder: string, searchChanged: (value: string
       onChange={debouncedOnChange((value: string) => props.searchChanged(value))}
     ></input>
   );
-}
+});
 
 export default SearchInput;
